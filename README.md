@@ -2,7 +2,7 @@
 
 # Evapotranspiration & Agro-Advisory System
 
-*Powered by Raspberry Pi 4B, Local LLMs via Ollama, and Open-Meteo API(https://open-meteo.com/en/docs)*
+*Powered by Raspberry Pi 4B, Local LLMs via Ollama, and Open-Meteo API*
 
 ---
 
