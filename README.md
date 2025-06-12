@@ -68,6 +68,7 @@ pandas
 gradio
 matplotlib
 numpy
+```
 
 ```bash
 pip install -r requirements.txt
