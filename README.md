@@ -83,12 +83,7 @@ pip install -r requirements.txt
 ## Usage
 
 1. **Start Ollama and Load LLMs**
-   Make sure your desired LLMs are available in Ollama:
-
-   ```bash
-   ollama serve
-   ollama pull qwen:0.5b   # Example: add other models as desired
-   ```
+Make sure your desired LLMs are available in Ollama as per [https://github.com/ollama/ollama](https://github.com/ollama/ollama)
 
 2. **Run the Application**
 
