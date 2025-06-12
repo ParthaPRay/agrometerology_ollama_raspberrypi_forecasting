@@ -172,7 +172,7 @@ def plot_et_comparison(df, loc_name, lat, lon):
     ax.set_xticklabels(labels, rotation=45)
     ax.set_xlabel("Date")
     ax.set_ylabel("Evapotranspiration (mm day⁻¹)")
-    ax.set_title(f"Comparative ET Models – {loc_name} ({lat:.4f}, {lon:.4f})")
+    ax.set_title(f"Comparative ET Models Forecasting – {loc_name} ({lat:.4f}, {lon:.4f})")
     ax.legend()
     plt.tight_layout()
     return fig
@@ -384,7 +384,7 @@ def step_process(selected_idx, matches, days, ollama_model):
     )
 
 with gr.Blocks() as demo:
-    gr.Markdown("# Evapotranspiration & Agro-Advisory in Raspberry Pi 4B by Using Ollama, Local LLMs, and Open-Meteo API")
+    gr.Markdown("# AgroMetLLM: Evapotranspiration & Agro-Advisory in Raspberry Pi 4B by Using Ollama, Local LLMs, and Open-Meteo API")
     with gr.Row():
         models = get_ollama_models()
         ollama_model = gr.Dropdown(label="Select LLM Model", choices=models, value=(models[0] if models else None))
