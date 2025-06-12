@@ -45,57 +45,6 @@ This project provides a **web-based agrometeorological advisory tool** that comb
 
 ---
 
-## Application Flow
-
-```mermaid
-flowchart TD
-    Start([Start])
-    UI[User loads Gradio Web UI]
-    Select[User selects:<br/>- LLM Model (Dropdown)<br/>- Location (Textbox)<br/>- Forecast Days (Slider)]
-    ModelChange{Model changed?}
-    Unload[Unload previous<br/>Ollama model]
-    Preload[Preload new model<br/>(null prompt)]
-    SearchBtn[User clicks "Search Location"]
-    Geocode[geocode(location)]
-    GeoNotFound{Location Found?}
-    ShowError[Show error: Not found]
-    ShowDropdown[Show dropdown of<br/>possible matches]
-    PickLoc[User selects exact location<br/>Enable "Generate" button]
-    GenerateBtn[User clicks "Generate ET Forecast & Advisory"]
-    FetchWeather[fetch_weather(lat,lon,days)]
-    ComputeET[compute_et_metrics(df, lat)]
-    Summary[prepare_summary(df)]
-    LLMCall[ollama_advice(..., model)]
-    Store[store_to_sqlite(...)]
-    Display[Display results:<br/>- Data Table<br/>- ET Chart<br/>- Model Info<br/>- Advisory Text]
-    End([End / Repeat])
-
-    Start --> UI
-    UI --> Select
-    Select --> ModelChange
-    ModelChange -- Yes --> Unload
-    Unload --> Preload
-    Preload --> SearchBtn
-    ModelChange -- No --> SearchBtn
-    SearchBtn --> Geocode
-    Geocode --> GeoNotFound
-    GeoNotFound -- No --> ShowError
-    GeoNotFound -- Yes --> ShowDropdown
-    ShowError --> SearchBtn
-    ShowDropdown --> PickLoc
-    PickLoc --> GenerateBtn
-    GenerateBtn --> FetchWeather
-    FetchWeather --> ComputeET
-    ComputeET --> Summary
-    Summary --> LLMCall
-    LLMCall --> Store
-    Store --> Display
-    Display --> End
-    End --> UI
-```
-
----
-
 ## Requirements
 
 * **Hardware:**
@@ -111,8 +60,20 @@ flowchart TD
 
 **Install requirements:**
 
+`requirements.txt`:
+
+```
+requests
+pandas
+gradio
+matplotlib
+numpy
+
 ```bash
-pip install gradio pandas numpy matplotlib requests
+pip install -r requirements.txt
+```
+
+```bash
 # Ollama: follow [Ollama install docs](https://ollama.com/)
 ```
 
