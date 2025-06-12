@@ -1,11 +1,8 @@
-Certainly! Here’s a **professional, detailed GitHub `README.md`** for your Gradio + Ollama + Open-Meteo agromet advisory application.
-It explains the purpose, setup, features, flow, and how to use the system.
-
 ---
 
 # Evapotranspiration & Agro-Advisory System
 
-*Powered by Raspberry Pi 4B, Local LLMs via Ollama, and Open-Meteo API*
+*Powered by Raspberry Pi 4B, Local LLMs via Ollama, and [Open-Meteo API](https://open-meteo.com/en/docs)*
 
 ---
 
