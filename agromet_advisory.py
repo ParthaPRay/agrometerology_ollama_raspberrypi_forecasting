@@ -7,6 +7,8 @@ import gradio as gr
 import requests
 import pandas as pd
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # Headless backend
 import matplotlib.pyplot as plt
 from datetime import date, timedelta
 import math
@@ -27,7 +29,7 @@ def get_ollama_models():
 
 def show_model_info(model):
     try:
-        r = requests.post(f"{OLLAMA_BASE}/api/show", json={"model": model}, timeout=10)
+        r = requests.post(f"{OLLAMA_BASE}/api/show", json={"model": model}, timeout=30)
         data = r.json()
         family = data.get("details", {}).get("family", "")
         param_size = data.get("details", {}).get("parameter_size", "")
@@ -269,10 +271,10 @@ Forecast from open-meteo + ET models. Moderate reliability.
         "model": model,
         "prompt": prompt,
         "stream": False,
-        "keep_alive": "10m"
+        "keep_alive": "20m"
     }
     try:
-        r = requests.post(f"{OLLAMA_BASE}/api/generate", json=payload, timeout=300)
+        r = requests.post(f"{OLLAMA_BASE}/api/generate", json=payload, timeout=900)
         r.raise_for_status()
         resp = r.json()
         model_name = resp.get("model", model)
@@ -320,7 +322,7 @@ def unload_previous_model(new_model, last_model):
             requests.post(
                 f"{OLLAMA_BASE}/api/generate",
                 json={"model": last_model, "prompt": " ", "keep_alive": 0, "stream": False},
-                timeout=10
+                timeout=30
             )
         except Exception:
             pass
