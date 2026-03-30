@@ -1,4 +1,3 @@
-# agromet_advisory.py
 # Partha Pratim Ray, 12/06/2025
 # parthapratimray1986@gmail.com
 
